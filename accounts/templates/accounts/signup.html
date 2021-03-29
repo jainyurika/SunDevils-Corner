@@ -1,0 +1,166 @@
+{% extends 'accounts/authbase.html' %}
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block body %}
+{{ form.media }}
+<div class="row d-flex justify-content-center">
+    <div class="col-8">
+        <h1 id="header">Sign Up</h1>
+        <br>
+        <form method="POST" action="" class="row row-cols-2 g-3 d-flex justify-content-center">
+            {% csrf_token %}
+            <div class="col-md-6">
+                {{form.fname}}
+            </div>
+            <div class="col-md-6">
+                {{form.lname}}
+                
+            </div>
+            <div class="col-md-3 input-group mb3">
+                {{form.email}}
+                <span class="input-group-text" id="basic-addon3">Enter an asu.edu email</span>
+                <div class="bg-warning" id="error-msg">
+                    {{form.email.errors|striptags}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{form.username}}
+            </div>
+            <div class="col-md-6">
+                {{form.dob}}
+            </div>
+            <div class="col-md-6">
+                {{form.password1}}
+            </div>
+            <div class="col-md-6">
+                {{form.password2}}
+            </div>
+            <div class="col-md-6">
+                {{form.gender}}
+            </div>
+            <div class="col-md-6">
+                {{form.classstandings}}
+            </div>
+            <div class="col-md-6">
+                {{form.major}}
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input type="submit" value="Sign Up" id="login-form-submit" class="btn btn-warning">
+            </div>
+            <div class="bg-warning col-md-10" id="error-msg">
+                    {{form.password2.errors|striptags}}
+            </div>
+        </form>
+            <p></p>
+            <div class="d-flex justify-content-center align-items-center mx-auto">
+                <h3 id="header">Already an User? <a id="anchor-link" href="{% url 'login' %}"
+                        style="text-decoration: none;" class="btn btn-warning">Login</a></h3>
+            </div>
+    </div>
+</div>
+{% endblock %}
+{% comment %}
+<div class="col-12">
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</div>
+<div>
+    <input type="submit" value="Register" id="register-form-submit">
+    <br><br>
+    <h3 id="header">Already an User? <a id="anchor-link" href="{% url 'login' %}"
+            style="text-decoration: none;">Login</a>
+    </h3>
+</div> {% endcomment %}
+
+{% comment %} <table>
+    <tr>
+        <td colspan="2">
+            <h1 id="header">Sign Up</h2>
+        </td>
+    </tr>
+
+    <tr>
+        <td id="signup-cell">{{form.fname}}</td>
+        <td id="signup-cell">{{form.lname}}</td>
+    </tr>
+    <tr>
+        <td id="signup-cell">{{form.email}}</td>
+        <td id="signup-cell">{{form.username}}</td>
+    </tr>
+    <tr>
+        <td id="signup-cell">{{form.password1}}</td>
+        <td id="signup-cell">{{form.password2}}</td>
+    </tr>
+    <tr>
+        <td id="signup-cell">{{form.gender}}</td>
+        <td id="signup-cell">{{form.classstandings}}</td>
+    </tr>
+    <tr>
+        <td id="signup-cell">{{form.major}}</td>
+        <td id="signup-cell">{{form.dob}}</td>
+    </tr>
+</table> {% endcomment %}
+{% comment %}
+<div id="child-pos">
+    <form id="login-form">
+        <table>
+            <tr>
+                <td colspan="2">
+                    <h1 id="header">Sign Up</h1>
+                </td>
+            </tr>
+            <tr>
+                <td id="signup-cell"><input type="text" name="f-name" id="f-name-field" class="register-form-field"
+                        placeholder="First Name"></td>
+                <td id="signup-cell"><input type="text" name="l-name" id="l-name-field" class="register-form-field"
+                        placeholder="Last Name">
+            </tr>
+            <tr>
+                <td id="signup-cell"> <input type="email" name="email" id="email-field" class="register-form-field"
+                        placeholder="abc@asu.edu"></td>
+                <td id="signup-cell"> <select name="gender" id="gender-field" class="register-form-field">
+                        <option value="">Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="transgender">Transgender</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td id="signup-cell"><input type="text" name="user" id="username-field" class="register-form-field"
+                        placeholder="Username" maxlength="8" required></td>
+                <td id="signup-cell"><input type="password" name="pass" id="passwor-field" class="register-form-field"
+                        placeholder="Password" maxlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                        required></td>
+            </tr>
+            <tr>
+                <td id="signup-cell"> <select name="class-standing" id="class-standing-field"
+                        class="register-form-field">
+                        <option value="">Class Standing</option>
+                        <option value="Freshman">Freshman</option>
+                        <option value="Sophomore">Sophomore</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Senior">Senior</option>
+                        <option value="Graduate">Graduate</option>
+                    </select></td>
+                <td id="signup-cell"><input type="text" name="major" id="major-field" class="register-form-field"
+                        placeholder="Major"></td>
+                </td>
+            </tr>
+            <tr>
+                <td id="signup-cell"><input type="date" name="DOB" id="DOB-field" class="register-form-field"
+                        placeholder="Date of Birth">
+                </td>
+                <td id="signup-cell"> <input type="tel" name="phone" id="phone-field" class="register-form-field"
+                        placeholder="Phone" maxlength="10"></td>
+            </tr>
+        </table>
+        <div>
+            <input type="submit" value="Register" id="register-form-submit">
+            <br><br>
+            <h3 id="header">Already an User? <a id="anchor-link" href="/login" style="text-decoration: none;">Login</a>
+            </h3>
+        </div>
+    </form>
+</div> {% endcomment %}

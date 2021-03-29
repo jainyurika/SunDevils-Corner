@@ -1,0 +1,51 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}
+SunDevil Corner | {{cat_name}}s | {{business.name}}
+{% endblock %}
+
+{% block body %}
+<div class="row justify-content-md-center" id="bg-pattern" style="min-height: 100vh">
+    <div class="row" style="height: 100px;">
+    </div>
+    <div class="col-md-auto">
+        <div class="row g-2 g-lg-3">
+            <div class="card" style="width: 30rem;">
+                {% comment %} <img class="card-img-top" src="..." alt="Card image cap"> {% endcomment %}
+                <div class="card-body">
+                    <h3 class="card-title">{{business.name}}</h3>
+                    <p class="card-text">{{business.about}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Phone: +1 {{business.phone}}</li>
+                    <li class="list-group-item">Address: {{business.address}}</li>
+                    <li class="list-group-item">Distance from Campus (Miles): {{business.distfromcampus}}</li>
+                </ul>
+                <div class="card-body">
+                    <a href="{{business.website}}"  target="_blank" class="card-link">{{business.website}}</a>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Votes: {{business.upvotecount}}
+                            <form acion="" method="POST">
+                                {% csrf_token %}
+                                <input type='hidden' , name='upvotecount' value='{{business.id}}'>
+                                <button class="btn btn-primary" type="submit">Upvote</button>
+                                {% comment %} <button type="button" value='1' class="btn btn-primary"
+                                    name="mybtn">Upvote</button> {% endcomment %}
+                            </form>
+                        </li>
+                    </ul>
+                    {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-arrow-up-circle" viewBox="0 0 16 16" name="mybtn">
+                        <path fill-rule="evenodd"
+                            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+                    </svg> {% endcomment %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row" style="height: 100px;">
+    </div>
+</div>
+{% endblock %}

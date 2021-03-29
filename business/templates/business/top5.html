@@ -1,0 +1,43 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}
+Top 5 {{business_cat}}s
+{% endblock %}
+
+{% block body %}
+
+<div class="row d-flex justify-content-md-center align-items-center" id="bg-pattern" style="min-height: 100vh">
+    <div class="row" style="height: 100px;">
+    </div>
+
+    <div class="row d-flex justify-content-md-center">
+        <div class="col-md-10 d-flex justify-content-md-center align-items-center">
+            <h1 class="display-4">Top 5 {{business_cat}}s</h1>
+        </div>
+    </div>
+    <div class="row" style="height: 20px;">
+    </div>
+
+    <div class="col-md-10 d-flex justify-content-md-center align-items-center">
+        <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3 d-flex justify-content-md-center">
+            {% for business in businesses %}
+            <div class="card" style="width: 27rem;">
+                <div class="card-body">
+                    <a href="{% url 'view_business' business.id %}">
+                        <h5 class="card-title">{{business.name}}</h5>
+                    </a>
+                    <h6 class="card-subtitle mb-2 text-muted">{{business.address}}</h6>
+                    <p class="card-text">{{business.about | truncatewords:40 }}</p>
+                    <a href="{{business.website}}" target="_blank" class="card-link">{{business.website|truncatechars:29}}</a>
+                    <a class="card-link" style="text-decoration:none; color: black">+1 {{business.phone}}</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row" style="height: 100px;">
+    </div>
+</div>
+
+{% endblock %}

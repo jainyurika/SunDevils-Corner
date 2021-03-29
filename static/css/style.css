@@ -1,0 +1,103 @@
+.bg-custom {
+    background-color: #96254d;
+}
+
+#header {
+    color: #FFC72C;
+    justify-content: center;
+}
+
+#div1 {
+    float: left;
+    width: 30px;
+    height: 30px;
+}
+
+#div2 {
+    float: left;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #FFC72C;
+}
+
+#new-div-content {
+    color: #FFC72C;
+}
+
+#auth-bg {
+    background-image: linear-gradient(to bottom, rgba(73, 73, 73, 0), rgba(73, 73, 73, 0.3), rgba(42, 42, 42, 0.60)), url("../images/GoldSunSet-2pitchforks-rankings-fulbright.jpg");
+    background-position: right;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.layer-top {
+    z-index: 10;
+    left: 18%;
+    top: -2%;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    transform: translate(-15%, 50%);
+}
+
+#sdc-logo {
+    width: 25%;
+}
+
+.btn {
+    font-weight: bold !important;
+}
+
+#error-msg {
+    font-weight: bold !important;
+}
+
+#bg-pattern {
+    background-image: linear-gradient(183deg, #ffffff, #f2eec3, #efe9b0, #ffde01);
+    /*url("../images/grad-bg.jpg"); */
+    /* background-position: right; */
+    position: relative;
+    background-size: auto;
+    background-repeat: repeat;
+}
+
+#bg-sdc {
+    background-image: url("../images/GoldSunSet-2pitchforks-rankings-fulbright.jpg");
+    /* background-position: right; */
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0px 59px;
+}
+
+.relative {
+    /* position: absolute;  */
+    background-color: rgba(0, 0, 0, 0.479);
+    width: max-content !important;
+    height: max-content !important;
+    position: absolute !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 10 !important;
+    left: 50% !important;
+    top: 50% !important;
+}
+
+#bg-overlay {
+    background-color: rgba(0, 0, 0, 0.52);
+    max-width: 100%;
+    max-height: max-content;
+    position: relative;
+}
+
+.container1 {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}

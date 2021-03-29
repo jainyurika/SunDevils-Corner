@@ -1,0 +1,24 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% block title %}
+
+{% endblock %}
+{% block body %}
+    <form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td colspan="2">
+                <h1 id="header">Add Apartment</h2>
+            </td>
+        </tr>
+        {% for field in form %}
+        <tr>
+            <td id="signup-cell">{{field.label}}</td>
+            <td id="signup-cell">{{field}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+        <input type="submit" name="Submit">
+    </form>
+{% endblock %}

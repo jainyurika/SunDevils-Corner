@@ -1,0 +1,102 @@
+{% extends 'accounts/authbase.html' %}
+{% load static %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block body %}
+<form id="login-form" method="POST" action="">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>
+                <h1 id="header">Login</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="d-grid gap-2 col-12 mx-auto">
+                    <div class="input-group">
+                        <input type="text" name="username" placeholder="Enter your asu.edu email" class="form-control"
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="form">
+                    </div>
+                    <div class="input-groupp">
+                        <input type="password" name="password" placeholder="Password" class="form-control"
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="form">
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" id="captcha">
+                <p></p>
+                <table id="login-form" class="d-flex justify-content-center align-items-center">
+                    <tr>
+                        <td>
+                            <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                        </td>
+                        <td>
+                            <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                        </td>
+                        <td>
+                            <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                        </td>
+                        <td>
+                            <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                        </td>
+                    </tr>
+                </table>
+
+                <table id="login-form" class="d-flex justify-content-center align-items-center">
+                    <tr>
+                        <td>
+                            <div id="div1">
+                                <img src="{% static 'images/3.gif' %}" draggable="true" ondragstart="drag(event)"
+                                    class="captcha-img" id="s">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="div1">
+                                <img src="{% static 'images/2.gif' %}" draggable="true" ondragstart="drag(event)"
+                                    class="captcha-img" id="a">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="div1">
+                                <img src="{% static 'images/4.gif' %}" draggable="true" ondragstart="drag(event)"
+                                    class="captcha-img" id="d">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="div1">
+                                <img src="{% static 'images/1.jpg' %}" draggable="true" ondragstart="drag(event)"
+                                    class="captcha-img" id="w">
+                            </div>
+                            <br>
+                        </td>
+                    </tr>
+                </table>
+
+                <p id="new-div-content">Drag the images to form Sparky's Pitchfork.</p>
+
+            </td>
+        </tr>
+    </table>
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <input type="submit" value="Login" id="login-form-submit" class="btn btn-warning disabled">
+    </div>
+    <p></p>
+    <div class="d-flex justify-content-center align-items-center mx-auto">
+        <h3 id="header">New User? <a id="anchor-link" href="{% url 'SignUpView' %}" class="btn btn-warning">Register</a></h3>
+    </div>
+
+</form>
+{% endblock %}

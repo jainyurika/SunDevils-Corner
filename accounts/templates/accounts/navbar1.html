@@ -1,0 +1,24 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+{% comment %} <img src="{% static 'images/Sentinel_512.png' %}" width="40px"> {% endcomment %}
+
+<ul>
+  <li><a href="{% url 'home' %}">Home</a></li>
+  <li><a href="#news">Discussion Board</a></li>
+  <li class="dropdown">
+    <a href="{% url 'business' %}" class="dropbtn">Businesses</a>
+    <div class="dropdown-content">
+      <a href="#">Apartments</a>
+      <a href="#">Haricut Shops</a>
+      <a href="#">Restaurants</a>
+      <a href="#">Grocery Stores</a>
+  <li class='log-out-btn a1'><a href="{% url 'logout' %}">Log Out</a></li>
+  <li class="dropdown log-out-btn">
+    <a class="dropbtn">{{request.user}}</a>
+    <div class="dropdown-content">
+      <a href="#">Profile</a>
+    </div>
+  </li>
+</ul>
+
+{% comment %} <li class='log-out-btn'><a class="user">{{request.user}}</a></li> {% endcomment %}

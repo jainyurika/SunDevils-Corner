@@ -1,0 +1,74 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}
+{{cat.name}}s
+{% endblock %}
+
+{% block body %}
+
+<div class="row d-flex justify-content-md-center align-items-center" id="bg-pattern" style="min-height: 100vh">
+    <div class="row" style="height: 100px;">
+    </div>
+    <!--Top 5 div-->
+    <div class="row d-flex justify-content-md-center">
+        <div class="col-md-10 d-flex justify-content-md-center align-items-center">
+            <div class="card  d-flex justify-content-md-center" style="width: 27rem;">
+                <img class="img-fluid" src="{% if cat.id == 1 %} {% static 'images/ISOMETRIC HOUSE.jpg' %}
+                {% elif cat.id == 2 %} {% static 'images/free-barber-icons-vector.jpg' %}
+                {% elif cat.id == 3 %} {% static 'images/vector-flat-restaurant.jpg' %}
+                {% elif cat.id == 4 %} {% static 'images/woman-shopping-with-the-cart-vector.jpg' %} {% endif %}"
+                    alt="Card image cap" style="height: 250px">
+                <div class="card-body relative d-flex justify-content-md-center align-items-center">
+                    <a href="{% if cat.id == 1 %} {% url 'top5apartment' %}
+                    {% elif cat.id == 2 %} {% url 'top5haircut' %}
+                    {% elif cat.id == 3 %} {% url 'top5restaurants' %}
+                    {% elif cat.id == 4 %} {% url 'top5grocerystores' %} {% endif %}" style="text-decoration: none;"
+                        class="text-white">
+                        <h5 class="card-title">Top 5 {{cat.name}}s</h5>
+                    </a>
+                    <p class="card-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--GAP-->
+    <div class="row" style="height: 50px;">
+    </div>
+    <!--GAP-->
+    
+    <!--All Biz div-->
+    <div class="row d-flex justify-content-md-center">
+        <div class="col-md-10 d-flex justify-content-md-center align-items-center">
+            <h1 class="display-4"><strong>All {{cat.name}}s</strong></h1>
+        </div>
+    </div>
+    <div class="row" style="height: 20px;">
+    </div>
+    <div class="row d-flex justify-content-md-center">
+        <div class="col-md-10 d-flex justify-content-md-center align-items-center">
+            <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3 d-flex justify-content-md-center">
+                {% for business in businesses %}
+                <div class="card" style="width: 27rem;">
+                    <div class="card-body">
+                        <a href="{% url 'view_business' business.id %}" style="text-decoration: none;">
+                            <h5 class="card-title">{{business.name}}</h5>
+                        </a>
+                        <p></p>
+                        <h6 class="card-subtitle mb-2 text-muted">{{business.address}}</h6>
+                        <p class="card-text">{{business.about |truncatewords:40 }}</p>
+                        <a href="{{business.website}}" class="card-link"
+                            style="text-decoration: none;" target="_blank">{{business.website|truncatechars:29}}</a>
+                        <a class="card-link" style="text-decoration:none; color: black">+1 {{business.phone}}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row" style="height: 100px;">
+    </div>
+</div>
+
+{% endblock %}
