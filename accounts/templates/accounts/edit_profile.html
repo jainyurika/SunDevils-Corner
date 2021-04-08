@@ -1,0 +1,90 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}
+{{user.fname}} {{user.lname}}'s Profile
+{% endblock %}
+
+{% block body %}
+
+<div class="row " id="bg-pattern" style="min-height: 100vh">
+
+    <div class="row py-5 px-4">
+        <div class="col-md-5 mx-auto">
+            <!-- Profile widget -->
+            <div class="bg-white shadow rounded overflow-hidden">
+                
+                <div class="bg-light py-1 px-4 d-flex justify-content-end text-center">
+                    
+                </div>
+                <div class="px-4 py-3">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <h5 class="mb-0">Update Profile</h5>
+                    </div>
+                    <hr>
+                    <div class="py-1 px-4 rounded shadow-sm bg-light">
+                    <form method="POST">
+                    {% csrf_token %}
+                    {% comment %} {% for field in form %} {% endcomment %}
+                        <div class="mb-3 row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">{{form.fname.label}}</label>
+                            <div class="col-sm-9">
+                            <p>{{form.fname}}</p>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">{{form.lname.label}}</label>
+                            <div class="col-sm-9">
+                            <p>{{form.lname}}</p>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">{{form.email.label}}</label>
+                            <div class="col-sm-9">
+                            <p>{{form.email}}</p>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">{{form.dob.label}}</label>
+                            <div class="col-sm-9">
+                            <p>{{form.dob}}</p>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">{{form.gender.label}}</label>
+                            <div class="col-sm-9">
+                            <p>{{form.gender}}</p>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">{{form.classstandings.label}}</label>
+                            <div class="col-sm-9">
+                            <p>{{form.classstandings}}</p>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">{{form.major.label}}</label>
+                            <div class="col-sm-9">
+                            <p>{{form.major}}</p>
+                            </div>
+                        </div>
+                    {% comment %} {% endfor %} {% endcomment %}
+                    <div class="mb-2 row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-9">
+                            <input type="submit" value="Update Profile" id="login-form-submit" class="btn btn-warning">
+                        </div>
+                    </div>
+                    <div class="bg-warning col-md-10" id="error-msg">
+                        {{form.password2.errors|striptags}}
+                    </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

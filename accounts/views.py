@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import SignUpForm
 from .decorators import unauthenticated_user
+from post.models import Post
+from.models import Account
 
 @unauthenticated_user
 def SignUpView(request):
@@ -52,6 +54,40 @@ def loginPage(request):
 @login_required(login_url='login')
 def home(request):
     return render(request, 'accounts/index.html')
+
+@login_required(login_url='login')
+def profile(request):
+    user = request.user
+    posts = Post.objects.filter(author_id=user.id)
+    post_count = posts.count()
+
+    context = {
+        'user':user,
+        'posts': posts,
+        'post_count':post_count
+        }
+    return render(request, 'accounts/profile.html', context)
+
+@login_required(login_url='login')
+# update view for details
+def update_view(request, pk):
+    # dictionary for initial data with 
+    # field names as keys
+    # fetch the object related to passed id
+    obj = get_object_or_404(Account, pk = request.user.id)
+    # pass the object as instance in form
+    form = SignUpForm(request.POST or None, instance = obj)
+    # save the data from the form and
+    # redirect to detail_view
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/"+id)
+    # add form dictionary to context
+    
+    context ={
+        'form':form
+    }
+    return render(request, "accounts/edit_profile.html", context)
 
 
 def logout_view(request):

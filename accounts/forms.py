@@ -29,12 +29,12 @@ class SignUpForm(UserCreationForm):
     
     class Meta(UserCreationForm.Meta):
         model = Account
-        fields = ['fname', 'lname', 'email', 'username', 'dob', 'gender', 'classstandings', 'major', 'password1', 'password2']
+        fields = ['fname', 'lname', 'email', 'dob', 'gender', 'classstandings', 'major', 'password1', 'password2']
         widgets = {
             'fname': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
             'lname': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'email'}),    
-            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
+            # 'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
             'major': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Major'}),
             }
 
